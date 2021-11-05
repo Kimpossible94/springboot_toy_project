@@ -3,33 +3,27 @@
 <head>
 <th:block th:replace="fragments :: flg_head"></th:block>
 <style type="text/css">
-
-	.tit{
-	   display:block; 
-	   width:150px;
-	}
-	.valid-msg{
-		color:red;   
-		font-size:0.5vw;
-	}
+.tit{
+	display:block; 
+	width:150px;
+}
+.valid-msg{color:red;	font-size:0.5vw;}
 
 </style>
+
 </head>
 <body>
-<h1>로그인</h1>
-   	<span class='valid-msg' th:if="${message}" th:text="${message}"></span>
-   <hr>
-   
-   <form action="/member/login" method="post">
-   
-      <span class='tit'>ID : </span>
-      <input type="text" name="userId" id="userId">
-      <span class='tit'>Password : </span>
-      <input type="password" name="password" id="password">
-      <button>로그인</button>
-   </form>
-   
-   
-   
+	<h1>로그인</h1>
+	<span class='valid-msg' th:if="${message}" th:text="${message}"></span>
+	<hr>
+	
+	<form action="/member/login" method="post">
+		<span class='tit'>ID : </span>
+		<input type="text" name="userId" id="userId">
+		<span class='tit'>Password : </span>
+		<input type="password" name="password" id="password">
+		<button>로그인</button>
+	</form>
+	
 </body>
 </html>

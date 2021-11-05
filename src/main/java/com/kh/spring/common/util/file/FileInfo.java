@@ -1,4 +1,4 @@
-package com.kh.spring.common.util;
+package com.kh.spring.common.util.file;
 
 import java.time.LocalDate;
 
@@ -19,7 +19,7 @@ import lombok.Data;
 @DynamicInsert
 @DynamicUpdate
 public class FileInfo {
-
+	
 	@Id
 	@GeneratedValue
 	private Long flIdx;
@@ -37,7 +37,12 @@ public class FileInfo {
 		return Config.DOMAIN.DESC + "/file/" + savePath + renameFileName;
 	}
 	
-	public String getDownloadURL() {
-		return "/file/" + savePath + renameFileName;
+	public String getDownloadPath() {
+		return Config.UPLOAD_PATH.DESC + savePath;
 	}
+	
+	
+	
+	
+
 }

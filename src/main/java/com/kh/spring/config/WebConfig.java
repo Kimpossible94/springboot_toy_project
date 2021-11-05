@@ -4,19 +4,34 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import com.kh.spring.common.interceptor.AuthInterceptor;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
-	
+
 	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
+	public void	addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new AuthInterceptor());
 	}
 	
-	public void addResourceHandler(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/file/**").addResourceLocations("file:///C:/CODE/upload/");
+	@Override
+	public void	addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/file/**")
+				.addResourceLocations("file:///C:/CODE/after/upload/");
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

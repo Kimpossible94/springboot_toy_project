@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:replace="fragments :: flg_head">
+</th:block>
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>* 게시판</h2>
+
+	<table style="border: 1px">
+		<thead>
+			<tr>
+				<th style="width: 15%">날짜</th>
+				<th style="width: 75%">제목</th>
+				<th style="width: 10%">작성자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="board : ${boardList}">
+				<th th:text="${board.regDate}"></th>
+				<th>
+					<a th:text="${board.title}" th:href="@{/board/board-detail(bdIdx=${board.bdIdx})}"></a>
+				</th>
+				<th th:text="${board.member.userId}"></th>
+			</tr>
+		</tbody>
+	</table>
+	
+	<!-- pagination section -->
+	<th:block th:replace="fragments :: flg_pagination"></th:block>
+</body>
+</html>

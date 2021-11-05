@@ -22,18 +22,33 @@ public class EmailSender {
 		this.mailSender = mailSender;
 	}
 	
-	public void sendEmail(String to, String subject, String htmlText) {
+	public void send(String to, String subject, String htmlTxt) {
+		
 		MimeMessage msg = mailSender.createMimeMessage();
-        try {
+		
+		try {
 			msg.setFrom(Config.COMPANY_EMAIL.DESC);
-			msg.setRecipients(Message.RecipientType.TO,to);
-			msg.setSubject(subject); //제목
-			msg.setSentDate(new Date());
-			msg.setText(htmlText);
+			msg.setRecipients(Message.RecipientType.TO, to);
+	        msg.setSubject(subject);
+	        msg.setSentDate(new Date());
+	        msg.setText(htmlTxt,"UTF-8","html");
 			mailSender.send(msg);
+			
 		} catch (MessagingException e) {
 			throw new HandlableException(ErrorCode.MAIL_SEND_FAIL_ERROR);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -45,7 +45,7 @@
 				e.preventDefault();
 			}
 			
-/*			if(!pwReg.test(password)){
+			/*if(!pwReg.test(password)){
 				document.querySelector('#pwCheck').innerHTML = '비밀번호는 숫자, 영문자, 특수문자 조합의 8글자 이상인 문자열 입니다.';
 				e.preventDefault();
 			}

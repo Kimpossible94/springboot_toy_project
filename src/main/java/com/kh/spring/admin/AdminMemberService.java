@@ -8,12 +8,20 @@ import org.springframework.stereotype.Service;
 import com.kh.spring.member.Member;
 
 @Service
-public class AdminService {
+public class AdminMemberService {
 	
 	@Autowired
-	private AdminRepository adminRepository;
+	private AdminMemberRepository adminMemberRepository;
 	
-	public List<Member> selectAllMember() {
+	public List<Member> selectAllMembers(){
 		return null;
 	}
+	
+	
+	
+	
+	
+	
+	
+
 }

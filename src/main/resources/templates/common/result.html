@@ -4,22 +4,12 @@
 <th:block th:replace="fragments :: flg_head"></th:block>
 </head>
 <body>
-
 	<script type="text/javascript">
-		<%-- 안내창 출력 --%>
-		if('[(${msg})]'){
-			alert("[(${msg})]");
-		}		
-		<%-- 뒤로 가기 --%>
-		if('[(${back})]'){
-			history.back();
-		}		
-		<%-- 페이지 이동 --%>
-		if('[(${url})]'){
-			location.href = "[(${url})]"
-		}
+		if('[(${msg})]') alert("[(${msg})]");		
 		
+		if('[(${back})]') history.back();	
+		
+		if('[(${url})]') location.href = '[(${url})]';
 	</script>
-
 </body>
 </html>

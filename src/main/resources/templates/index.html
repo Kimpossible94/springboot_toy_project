@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<th:block th:replace="fragments :: flg_head">
+<th:block th:replace="fragments :: flg_head"></th:block>
 <style type="text/css">
-
-	.h1{
-	   display:block; 
-	   width:150px;
+	h1{
+		text-align: center;
 	}
-	.valid-msg{
-		color:red;   
-		font-size:0.5vw;
-	}
-
+	
+	.valid-msg{color:red;	font-size:0.5vw;}
 </style>
-</th:block>
 </head>
 <body>
-<h1 style='text-align: center;'>PCLASS TOY PROJECT</h1>
-	<!-- boolean 자동변환 지원 : message가 없으면 자동으로 boolean 변환되어서 false가 된다. -->
-   	<span class='valid-msg' th:if="${message}" th:text="${message}"></span>
 
-<th:block th:if="${session.authentication}">
-	<h2><a href="member/login">login</a></h2>
-	<h2><a href="member/join">sign up</a></h2>
-</th:block>
+<h1>PCLASS TOY PROJECT</h1>
+
+<span class='valid-msg' th:if="${message}" th:text="${message}"></span>
 
 <th:block th:unless="${session.authentication}">
-	<h2><a href="member/logout">logout</a></h2>
-	<h2><a href="member/join">sign up</a></h2>
+	<h2><a href='/member/login'>login</a></h2>
+	<h2><a href='/member/join'>회원가입</a></h2>
 </th:block>
+
+<th:block th:if="${session.authentication}">
+	<h2><a href='/member/logout'>logout</a></h2>
+	<h2><a href='/member/mypage'>마이페이지</a></h2>
+	<h2><a href='/board/board-form'>게시글쓰기</a></h2>
+</th:block>
+
+
+
+
+
+
+
 </body>
 </html>

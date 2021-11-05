@@ -16,24 +16,22 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.kh.spring.common.util.FileInfo;
+import com.kh.spring.common.util.file.FileInfo;
 import com.kh.spring.member.Member;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
 @DynamicInsert
 @DynamicUpdate
-public class Board {
-
+@ToString(exclude = "files")
+public class Board {	
+	
 	@Id
 	@GeneratedValue
 	private Long bdIdx;
-	
-	@ManyToOne
-	@JoinColumn(name = "userId")
-	private Member member;
 	
 	@Column(columnDefinition = "date default sysdate")
 	private LocalDate regDate;
@@ -44,8 +42,19 @@ public class Board {
 	@Column(columnDefinition = "number default 0")
 	private Boolean isDel;
 	
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private Member member;
+	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<FileInfo> file = new ArrayList<FileInfo>();
+	private List<FileInfo> files = new ArrayList<FileInfo>();
+	
 	
 	
 }
+
+
+
+
+
+

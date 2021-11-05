@@ -1,20 +1,20 @@
 package com.kh.spring.common.code;
 
 public enum Config {
-
-	//DOMAIN("http://www.pclass.com"),
-	DOMAIN("http://localhost:7979"),
-	SMTP_AUTHENTICATION_ID("dudqja115@gmail.com"),
-	SMTP_AUTHENTICATION_PW("a"),
+	
+	//DOMAIN("https://pclass.ga"),
+	DOMAIN("http://localhost:9090"),
 	COMPANY_EMAIL("dudqja115@gmail.com"),
-	
-	//UPLOAD_PATH("운영서버 경로이름"), 운영서버용 경로
-	UPLOAD_PATH("C:\\CODE\\upload\\"); //개발서버용 경로
-	
+	SMTP_AUTHENTICATION_ID("dudqja115@gmail.com"),
+	SMTP_AUTHENTICATION_PASSWORD("1234"),
+	UPLOAD_PATH("C:\\CODE\\upload\\");
+
 	public final String DESC;
 	
-	private Config(String desc) {
+	Config(String desc) {
 		this.DESC = desc;
 	}
+
+	
 	
 }

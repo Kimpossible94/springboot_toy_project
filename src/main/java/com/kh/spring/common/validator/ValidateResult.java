@@ -6,12 +6,12 @@ import java.util.Map;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
-public class ValidatorResult {
-
-	private Map<String, Object> error;
+public class ValidateResult {
 	
-	public ValidatorResult() {
-		error = new HashMap<>();
+	private Map<String,Object> error;
+	
+	public ValidateResult() {
+		error = new HashMap<String, Object>();
 	}
 	
 	public void addErrors(Errors errors) {
@@ -19,9 +19,8 @@ public class ValidatorResult {
 			error.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
 	}
-	
-	public Map<String, Object> getError(){
+
+	public Map<String, Object> getError() {
 		return error;
 	}
-	
 }
