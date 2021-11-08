@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.spring.common.code.ErrorCode;
@@ -30,7 +31,9 @@ public class BoardService{
 		FileUtil fileUtil = new FileUtil();
 		
 		for (MultipartFile multipartFile : multiparts) {
-			fileInfos.add(fileUtil.fileUpload(multipartFile));
+			if(!multipartFile.isEmpty()) {
+				fileInfos.add(fileUtil.fileUpload(multipartFile));
+			}
 		}
 		
 		board.setFiles(fileInfos);
@@ -55,6 +58,26 @@ public class BoardService{
 				.build();
 		
 		return Map.of("boardList", boards, "paging", pageUtil);
+	}
+
+	@Transactional
+	public void modifyBoard(Board board, List<MultipartFile> fileList, List<Long> removeFlIdx) {
+		
+		Board boardEntity = boardRepository.findById(board.getBdIdx()).orElseThrow(() -> new HandlableException(ErrorCode.UNAUTHORIZED_PAGE_ERROR));
+		
+		FileUtil fileUtil = new FileUtil();
+		boardEntity.setTitle(board.getTitle());
+		boardEntity.setContent(board.getContent());
+		boardEntity.getFiles().removeIf(e -> {
+			if(removeFlIdx.contains(e.getFlIdx())) {
+				e.setIsDel(true);
+				fileUtil.removeFile(e.getDownloadPath());
+				return true;
+			}
+			
+			return false;
+		});
+		
 	}
 	
 }

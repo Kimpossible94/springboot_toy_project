@@ -67,7 +67,10 @@ public class FileUtil {
 		return fileDTO;
 	}
 	
-	
+	public void removeFile(String path) {
+		File file = new File(path);
+		file.delete();
+	}
 	
 	
 	

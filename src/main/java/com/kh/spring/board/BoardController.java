@@ -2,6 +2,7 @@ package com.kh.spring.board;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,9 +53,20 @@ public class BoardController {
 		model.addAllAttributes(boardService.findBoardByPage(page));
 	}
 	
-
+	@GetMapping("board-modify")
+	public void boardModify(Model model, long bdIdx) {
+		model.addAttribute("board", boardService.findBoardByIdx(bdIdx));
+	}
 	
-	
+	@PostMapping("board-modify")
+	public String modifyBoard(Board board, @RequestParam List<MultipartFile> fileList
+							,@RequestParam(required = false) Optional<List<Long>> removeFlIdx) {
+		
+		boardService.modifyBoard(board, fileList, removeFlIdx.orElse(List.of()));
+		
+		
+		return "redirect:/board/board-detail?bdIdx=" + board.getBdIdx();
+	}
 	
 	
 	

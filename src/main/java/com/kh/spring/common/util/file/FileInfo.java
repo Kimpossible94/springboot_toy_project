@@ -38,7 +38,7 @@ public class FileInfo {
 	}
 	
 	public String getDownloadPath() {
-		return Config.UPLOAD_PATH.DESC + savePath;
+		return Config.UPLOAD_PATH.DESC + savePath + renameFileName;
 	}
 	
 	
