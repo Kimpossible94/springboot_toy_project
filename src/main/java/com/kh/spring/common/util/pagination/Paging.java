@@ -24,16 +24,16 @@ public class Paging {
 		this.blockCnt = builder.blockCnt;
 		this.total = builder.total;
 		this.cntPerPage = builder.cntPerPage;
-		this.lastPage = total/cntPerPage + 1;
+		this.lastPage = (int) Math.ceil((double)total/cntPerPage);
 		this.prev = curPage == 1 ? 1 : curPage - 1;
-		this.next = curPage == total ? total : curPage + 1;
+		this.next = curPage == lastPage ? lastPage : curPage + 1;
 		calBlockStartAndEnd();
 	}
 	
 	public void calBlockStartAndEnd() {
 		this.blockStart = (curPage-1)/blockCnt * blockCnt + 1;
 		int end = blockStart + blockCnt - 1;
-		this.blockEnd = end > total ? total : end;
+		this.blockEnd = end > lastPage ? lastPage : end;
 	}
 	
 	public static Builder builder() {

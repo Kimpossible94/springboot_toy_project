@@ -16,16 +16,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="member : ${mebers}" th:object="${member}">
-			<td th:text="${userId}"></td>
-			<td th:text="${tell}"></td>
-			<td th:text="${email}"></td>
+		<tr th:each="member : ${members}" th:object="${member}">
+			<td th:text="*{userId}"></td>
+			<td th:text="*{tell}"></td>
+			<td th:text="*{email}"></td>
 			<td ><a href="/admin/member/leave">탈퇴</a></td>
 		</tr>		
 	</tbody>
 
 </table>
-
+<div th:replace="fragments :: flg_pagination"></div>
 
 </body>
 </html>
